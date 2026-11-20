@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1780 700" width="1780" height="700" font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect width="1780" height="700" fill="#0b1530"/>
+<rect x="20" y="20" width="320" height="216" rx="14" fill="#16275a" stroke="#3b5bdb" stroke-width="1.5"/>
+<path d="M20 34 a14 14 0 0 1 14 -14 h292 a14 14 0 0 1 14 14 v32 h-320 z" fill="#1f3a8a"/>
+<text x="36" y="51" font-size="25" font-weight="700" fill="#fff">reset_senha</text>
+<text x="36" y="89" font-size="21" font-weight="700" fill="#5eead4">id</text>
+<text x="324" y="89" font-size="17" text-anchor="end" fill="#fbbf24">INTEGER · PK</text>
+<text x="36" y="123" font-size="21" font-weight="700" fill="#5eead4">usuario_id</text>
+<text x="324" y="123" font-size="17" text-anchor="end" fill="#7aa2ff">INTEGER · FK</text>
+<text x="36" y="157" font-size="21" font-weight="700" fill="#5eead4">token_hash</text>
+<text x="324" y="157" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="191" font-size="21" font-weight="700" fill="#5eead4">expira_em</text>
+<text x="324" y="191" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="225" font-size="21" font-weight="700" fill="#5eead4">usado</text>
+<text x="324" y="225" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<rect x="20" y="275" width="320" height="318" rx="14" fill="#16275a" stroke="#3b5bdb" stroke-width="1.5"/>
+<path d="M20 289 a14 14 0 0 1 14 -14 h292 a14 14 0 0 1 14 14 v32 h-320 z" fill="#1f3a8a"/>
+<text x="36" y="306" font-size="25" font-weight="700" fill="#fff">usuarios</text>
+<text x="36" y="344" font-size="21" font-weight="400" fill="#e8ecf8">id</text>
+<text x="324" y="344" font-size="17" text-anchor="end" fill="#fbbf24">INTEGER · PK</text>
+<text x="36" y="378" font-size="21" font-weight="400" fill="#e8ecf8">nome</text>
+<text x="324" y="378" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="412" font-size="21" font-weight="400" fill="#e8ecf8">email</text>
+<text x="324" y="412" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="446" font-size="21" font-weight="400" fill="#e8ecf8">senha_hash</text>
+<text x="324" y="446" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="480" font-size="21" font-weight="400" fill="#e8ecf8">ntfy_topico</text>
+<text x="324" y="480" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="514" font-size="21" font-weight="400" fill="#e8ecf8">criado_em</text>
+<text x="324" y="514" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="548" font-size="21" font-weight="700" fill="#5eead4">prefs_som</text>
+<text x="324" y="548" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="36" y="582" font-size="21" font-weight="700" fill="#5eead4">cuidador_topico</text>
+<text x="324" y="582" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<rect x="480" y="50" width="320" height="488" rx="14" fill="#16275a" stroke="#3b5bdb" stroke-width="1.5"/>
+<path d="M480 64 a14 14 0 0 1 14 -14 h292 a14 14 0 0 1 14 14 v32 h-320 z" fill="#1f3a8a"/>
+<text x="496" y="81" font-size="25" font-weight="700" fill="#fff">medicamentos</text>
+<text x="496" y="119" font-size="21" font-weight="400" fill="#e8ecf8">id</text>
+<text x="784" y="119" font-size="17" text-anchor="end" fill="#fbbf24">INTEGER · PK</text>
+<text x="496" y="153" font-size="21" font-weight="400" fill="#e8ecf8">usuario_id</text>
+<text x="784" y="153" font-size="17" text-anchor="end" fill="#7aa2ff">INTEGER · FK</text>
+<text x="496" y="187" font-size="21" font-weight="400" fill="#e8ecf8">nome</text>
+<text x="784" y="187" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="221" font-size="21" font-weight="400" fill="#e8ecf8">dosagem</text>
+<text x="784" y="221" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="255" font-size="21" font-weight="400" fill="#e8ecf8">observacoes</text>
+<text x="784" y="255" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="289" font-size="21" font-weight="400" fill="#e8ecf8">data_inicio</text>
+<text x="784" y="289" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="323" font-size="21" font-weight="400" fill="#e8ecf8">data_fim</text>
+<text x="784" y="323" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="357" font-size="21" font-weight="400" fill="#e8ecf8">intervalo_horas</text>
+<text x="784" y="357" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<text x="496" y="391" font-size="21" font-weight="400" fill="#e8ecf8">primeira_dose</text>
+<text x="784" y="391" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="496" y="425" font-size="21" font-weight="400" fill="#e8ecf8">ativo</text>
+<text x="784" y="425" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<text x="496" y="459" font-size="21" font-weight="700" fill="#5eead4">estoque</text>
+<text x="784" y="459" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<text x="496" y="493" font-size="21" font-weight="700" fill="#5eead4">estoque_aviso</text>
+<text x="784" y="493" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<text x="496" y="527" font-size="21" font-weight="700" fill="#5eead4">estoque_avisado</text>
+<text x="784" y="527" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<rect x="960" y="50" width="320" height="284" rx="14" fill="#16275a" stroke="#3b5bdb" stroke-width="1.5"/>
+<path d="M960 64 a14 14 0 0 1 14 -14 h292 a14 14 0 0 1 14 14 v32 h-320 z" fill="#1f3a8a"/>
+<text x="976" y="81" font-size="25" font-weight="700" fill="#fff">horarios</text>
+<text x="976" y="119" font-size="21" font-weight="400" fill="#e8ecf8">id</text>
+<text x="1264" y="119" font-size="17" text-anchor="end" fill="#fbbf24">INTEGER · PK</text>
+<text x="976" y="153" font-size="21" font-weight="400" fill="#e8ecf8">medicamento_id</text>
+<text x="1264" y="153" font-size="17" text-anchor="end" fill="#7aa2ff">INTEGER · FK</text>
+<text x="976" y="187" font-size="21" font-weight="400" fill="#e8ecf8">hora</text>
+<text x="1264" y="187" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="976" y="221" font-size="21" font-weight="400" fill="#e8ecf8">dias_semana</text>
+<text x="1264" y="221" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="976" y="255" font-size="21" font-weight="400" fill="#e8ecf8">ativo</text>
+<text x="1264" y="255" font-size="17" text-anchor="end" fill="#8ea0cf">INTEGER</text>
+<text x="976" y="289" font-size="21" font-weight="400" fill="#e8ecf8">criado_em</text>
+<text x="1264" y="289" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="976" y="323" font-size="21" font-weight="400" fill="#e8ecf8">data_unica</text>
+<text x="1264" y="323" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<rect x="1440" y="50" width="320" height="318" rx="14" fill="#16275a" stroke="#3b5bdb" stroke-width="1.5"/>
+<path d="M1440 64 a14 14 0 0 1 14 -14 h292 a14 14 0 0 1 14 14 v32 h-320 z" fill="#1f3a8a"/>
+<text x="1456" y="81" font-size="25" font-weight="700" fill="#fff">registros</text>
+<text x="1456" y="119" font-size="21" font-weight="400" fill="#e8ecf8">id</text>
+<text x="1744" y="119" font-size="17" text-anchor="end" fill="#fbbf24">INTEGER · PK</text>
+<text x="1456" y="153" font-size="21" font-weight="400" fill="#e8ecf8">horario_id</text>
+<text x="1744" y="153" font-size="17" text-anchor="end" fill="#7aa2ff">INTEGER · FK</text>
+<text x="1456" y="187" font-size="21" font-weight="400" fill="#e8ecf8">data_prevista</text>
+<text x="1744" y="187" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="1456" y="221" font-size="21" font-weight="400" fill="#e8ecf8">status</text>
+<text x="1744" y="221" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="1456" y="255" font-size="21" font-weight="400" fill="#e8ecf8">adiado_ate</text>
+<text x="1744" y="255" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="1456" y="289" font-size="21" font-weight="400" fill="#e8ecf8">registrado_em</text>
+<text x="1744" y="289" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="1456" y="323" font-size="21" font-weight="400" fill="#e8ecf8">ultimo_aviso</text>
+<text x="1744" y="323" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<text x="1456" y="357" font-size="21" font-weight="700" fill="#5eead4">aviso_cuidador</text>
+<text x="1744" y="357" font-size="17" text-anchor="end" fill="#8ea0cf">TEXT</text>
+<path d="M340 330 L480 330" stroke="#7aa2ff" stroke-width="2.5" fill="none"/>
+<text x="348" y="322" font-size="22" font-weight="700" fill="#fbbf24">1</text>
+<text x="458" y="322" font-size="22" font-weight="700" fill="#fbbf24">N</text>
+<path d="M800 120 L960 120" stroke="#7aa2ff" stroke-width="2.5" fill="none"/>
+<text x="808" y="112" font-size="22" font-weight="700" fill="#fbbf24">1</text>
+<text x="938" y="112" font-size="22" font-weight="700" fill="#fbbf24">N</text>
+<path d="M1280 120 L1440 120" stroke="#7aa2ff" stroke-width="2.5" fill="none"/>
+<text x="1288" y="112" font-size="22" font-weight="700" fill="#fbbf24">1</text>
+<text x="1418" y="112" font-size="22" font-weight="700" fill="#fbbf24">N</text>
+<path d="M180 216 L180 275" stroke="#7aa2ff" stroke-width="2.5" fill="none"/>
+<text x="190" y="238" font-size="22" font-weight="700" fill="#fbbf24">N</text>
+<text x="190" y="267" font-size="22" font-weight="700" fill="#fbbf24">1</text>
+<rect x="20" y="640" width="18" height="18" rx="4" fill="#5eead4"/><text x="48" y="656" font-size="21" fill="#e8ecf8">Tabelas e colunas adicionadas na segunda etapa (recuperação de senha, estoque, cuidador e som na conta)</text>
+<text x="20" y="684" font-size="19" fill="#8ea0cf">1 = um · N = vários · PK = chave primária · FK = chave estrangeira. Todas as consultas filtram pelo usuário logado.</text>
+</svg>

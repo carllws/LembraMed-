@@ -1,0 +1,24 @@
+# Publicação no Render (https://render.com): New → Blueprint → escolha o repositório.
+services:
+  - type: web
+    name: lembramed
+    runtime: docker
+    plan: starter          # disco persistente exige plano pago; o gratuito "dorme" e os alarmes não saem
+    disk:
+      name: dados
+      mountPath: /data     # o banco SQLite fica aqui e sobrevive a novos deploys
+      sizeGB: 1
+    envVars:
+      - key: BASE_URL      # preencha depois do 1º deploy, ex.: https://lembramed.onrender.com
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: TZ
+        value: America/Manaus
+      - key: DB_PATH
+        value: /data/lembramed.db
+      - key: TRUST_PROXY
+        value: "1"
+      - key: COOKIE_SECURE
+        value: "1"
+      # Opcional, para o e-mail de "esqueci a senha": SMTP_HOST, SMTP_PORT, SMTP_USUARIO, SMTP_SENHA, SMTP_DE

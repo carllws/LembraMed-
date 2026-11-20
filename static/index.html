@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LembraMed!</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💊%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/estilo.css">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/static/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icone-192.png">
+<meta name="theme-color" content="#0b1530">
+</head>
+<body>
+
+<!-- ============ ACESSO ============ -->
+<div class="auth" id="tela-auth" hidden>
+  <div class="fundo-noite" aria-hidden="true"><i class="orbe o1"></i><i class="orbe o2"></i><i class="orbe o3"></i></div>
+  <div class="auth-cartao" id="cartao-auth">
+    <span class="logo">💊</span>
+    <h1 class="marca-nome">Lembra<b>Med!</b></h1>
+    <p class="sub">Nunca mais esqueça de tomar seu remédio.</p>
+
+    <div class="abas" id="abas-auth">
+      <div class="indicador"></div>
+      <button type="button" data-alvo="form-login" class="ativa">Entrar</button>
+      <button type="button" data-alvo="form-cadastro">Criar conta</button>
+    </div>
+
+    <form id="form-login" class="painel" autocomplete="on">
+      <label for="login-email">E-mail</label>
+      <input type="email" id="login-email" autocomplete="email" required>
+      <label for="login-senha">Senha</label>
+      <div class="senha-box">
+        <input type="password" id="login-senha" autocomplete="current-password" required>
+        <button type="button" class="ver-senha" data-alvo="login-senha" aria-label="Mostrar senha">👁</button>
+      </div>
+      <p class="msg-erro" role="alert"></p>
+      <button class="principal" type="submit">Entrar</button>
+    </form>
+
+    <form id="form-cadastro" class="painel" autocomplete="on" hidden novalidate>
+      <div class="passos" id="cad-passos" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="passo-info"><span id="cad-passo-txt">Passo 1 de 3</span><span id="cad-passo-nome">Seu nome</span></div>
+
+      <section class="passo ativo" data-passo="0">
+        <div class="passo-titulo" id="cad-saudacao">Vamos começar! Como podemos te chamar?</div>
+        <p class="passo-dica">É assim que o LembraMed! vai te cumprimentar.</p>
+        <label for="cad-nome">Seu nome</label>
+        <div class="campo-box" id="box-nome">
+          <input type="text" id="cad-nome" autocomplete="name" maxlength="80" placeholder="Ex.: Maria Silva" required>
+          <span class="status" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="passo" data-passo="1">
+        <div class="passo-titulo">Qual é o seu e-mail?</div>
+        <p class="passo-dica">Você vai usar ele para entrar no app.</p>
+        <label for="cad-email">E-mail</label>
+        <div class="campo-box" id="box-email">
+          <input type="email" id="cad-email" autocomplete="email" placeholder="voce@exemplo.com" required>
+          <span class="status" aria-hidden="true"></span>
+        </div>
+        <div class="sugestoes" id="cad-sugestoes"></div>
+        <p class="aviso-linha" id="cad-email-aviso"></p>
+      </section>
+
+      <section class="passo" data-passo="2">
+        <div class="passo-titulo">Agora, crie uma senha</div>
+        <p class="passo-dica">Só os 8 caracteres são obrigatórios; o resto deixa a senha mais forte.</p>
+        <label for="cad-senha">Senha</label>
+        <div class="senha-box">
+          <input type="password" id="cad-senha" autocomplete="new-password" minlength="8" required>
+          <button type="button" class="ver-senha" data-alvo="cad-senha" aria-label="Mostrar senha">👁</button>
+        </div>
+        <div class="forca"><i id="forca-barra"></i></div>
+        <div class="pequeno" id="forca-texto" style="margin-top:4px">&nbsp;</div>
+        <ul class="requisitos" id="cad-requisitos">
+          <li data-r="len">Pelo menos 8 caracteres</li>
+          <li data-r="caixa">Letras maiúsculas e minúsculas</li>
+          <li data-r="num">Pelo menos um número</li>
+          <li data-r="sim">Um símbolo, como ! @ # ?</li>
+        </ul>
+        <label for="cad-senha2">Repita a senha</label>
+        <div class="campo-box" id="box-senha2">
+          <input type="password" id="cad-senha2" autocomplete="new-password" required>
+          <span class="status" aria-hidden="true"></span>
+        </div>
+        <p class="aviso-linha" id="cad-senha-aviso"></p>
+      </section>
+
+      <p class="msg-erro" role="alert"></p>
+      <div class="passo-botoes">
+        <button type="button" class="voltar" id="cad-voltar" hidden>← Voltar</button>
+        <button type="button" class="principal" id="cad-seguir">Continuar →</button>
+        <button type="submit" class="principal" id="cad-enviar" hidden>Criar minha conta 🎉</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="tela-app" hidden>
+  <div class="fundo-noite" aria-hidden="true"><i class="orbe o1"></i><i class="orbe o2"></i><i class="orbe o3"></i></div>
+
+  <aside class="lateral">
+    <div class="marca"><span class="logo-mini">💊</span><span class="marca-nome">Lembra<b>Med!</b><br><small>seu lembrete de remédio</small></span></div>
+    <nav class="menu" id="menu">
+      <span class="menu-ind" id="menu-ind"></span>
+      <button type="button" data-alvo="aba-hoje" class="ativa"><span class="ico">🏠</span><span>Hoje</span></button>
+      <button type="button" data-alvo="aba-crono"><span class="ico">📊</span><span>Cronogramas</span></button>
+      <button type="button" data-alvo="aba-historico"><span class="ico">📅</span><span>Histórico</span></button>
+      <button type="button" data-alvo="aba-estoque"><span class="ico">📦</span><span>Estoque</span></button>
+      <button type="button" data-alvo="aba-perfil"><span class="ico">⚙️</span><span>Perfil</span></button>
+    </nav>
+  </aside>
+
+  <div class="usuario-box">
+    <div class="avatar" id="avatar">?</div>
+    <div class="quem"><b id="nome-usuario">Olá!</b><span id="email-topo"></span></div>
+    <button id="btn-tema" title="Trocar tema" aria-label="Trocar tema">🌙</button>
+    <button id="btn-sair">Sair</button>
+  </div>
+
+  <main class="conteudo" id="conteudo" data-dir="dir">
+    <section class="hero">
+      <div>
+        <p class="hero-data" id="hero-data"></p>
+        <h1><span class="grad" id="ola">Olá!</span> <span id="ola-emoji"></span></h1>
+        <span class="hero-proxima" id="hero-proxima" hidden></span>
+      </div>
+      <div class="relogio"><span id="rel-hm">--:--</span><span id="rel-s">:--</span></div>
+    </section>
+    <!-- HOJE -->
+    <div id="aba-hoje" class="painel">
+      <div class="cartao">
+        <div class="resumo">
+          <div class="anel">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <circle class="trilho" cx="55" cy="55" r="44"></circle>
+              <circle class="progresso" id="anel-prog" cx="55" cy="55" r="44"></circle>
+            </svg>
+            <div class="num" id="anel-num">0%</div>
+          </div>
+          <div class="textos">
+            <h2 style="margin-bottom:4px">Seu dia</h2>
+            <div id="resumo-texto" class="pequeno">Carregando…</div>
+            <div class="proximo" id="proximo" hidden></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cartao">
+        <h2>⏰ Alarmes agora</h2>
+        <div id="alarmes"></div>
+        <div class="linha" style="margin-top:10px">
+          <button id="btn-alertas">🔔 Ativar som e aviso no navegador</button>
+          <button id="btn-silenciar" hidden>🔇 Silenciar</button>
+          <span class="pequeno" id="status-alertas"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRONOGRAMAS (dashboard) -->
+    <div id="aba-crono" class="painel" hidden>
+      <div class="stats">
+        <div class="stat" style="--i:0"><div class="stat-num" id="st-adesao">—</div><div class="stat-rot">Adesão da semana</div></div>
+        <div class="stat" style="--i:1"><div class="stat-num" id="st-ativos">0</div><div class="stat-rot">Tratamentos ativos</div></div>
+        <div class="stat" style="--i:2"><div class="stat-num" id="st-doses">0/0</div><div class="stat-rot">Doses tomadas</div></div>
+      </div>
+
+      <div class="cartao">
+        <h2>🗓️ Semana</h2>
+        <div class="semana-rolagem"><div class="semana" id="semana"></div></div>
+        <div class="legenda">
+          <span><i style="background:#2bb87a"></i>Tomado</span><span><i style="background:#f2b84b"></i>Pendente</span>
+          <span><i style="background:#e5857b"></i>Perdido</span><span><i style="background:#9aa4b2"></i>Agendado</span>
+        </div>
+      </div>
+
+      <div class="cartao">
+        <div class="linha" style="justify-content:space-between; margin-bottom:8px">
+          <h2 style="margin:0">Meus cronogramas</h2>
+          <button class="principal" id="btn-novo">➕ Novo cronograma</button>
+        </div>
+
+        <div class="recolher" id="form-novo-box"><div>
+          <div style="padding:2px 2px 18px; border-bottom:1px solid var(--borda); margin-bottom:14px">
+            <div class="wiz-passo" style="margin-top:6px"><span class="n">1</span><h3>Remédio</h3></div>
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" placeholder="Ex.: Amoxicilina" maxlength="80">
+            <div class="grid-campos">
+              <div><label for="dosagem">Dosagem</label><input type="text" id="dosagem" placeholder="Ex.: 1 comprimido" maxlength="80"></div>
+              <div><label for="obs">Observações</label><input type="text" id="obs" placeholder="Ex.: após o café" maxlength="160"></div>
+            </div>
+
+            <div class="grid-campos">
+              <div><label for="estoque-novo">Quantidade em estoque (opcional)</label><input type="number" id="estoque-novo" min="0" placeholder="Ex.: 30 comprimidos"></div>
+              <div><label for="estoque-aviso-novo">Avisar quando restar</label><input type="number" id="estoque-aviso-novo" min="0" value="5"></div>
+            </div>
+
+            <div class="wiz-passo"><span class="n">2</span><h3>Frequência</h3></div>
+            <div class="seg" id="seg-modo"></div>
+
+            <div id="bloco-intervalo" style="margin-top:10px">
+              <label>A cada quantas horas? (de 1 a 12)</label>
+              <div class="seg" id="seg-x"></div>
+              <label>Primeira dose</label>
+              <div class="seg" id="seg-pd"></div>
+              <div class="linha" id="bloco-pd-escolher" hidden style="margin-top:8px">
+                <input type="date" id="c-pd-data" style="width:auto"><input type="time" id="c-pd-hora" style="width:auto">
+              </div>
+              <p class="pequeno" style="margin:8px 0 0">Dica: se você já tomou a primeira dose, escolha o horário da próxima.</p>
+            </div>
+
+            <div id="bloco-fixo" hidden style="margin-top:10px">
+              <div class="seg" id="seg-freq"></div>
+              <div id="bloco-primeiro">
+                <label for="c-primeiro">Primeiro horário do dia</label>
+                <input type="time" id="c-primeiro" value="08:00" style="width:auto">
+              </div>
+              <div id="bloco-custom" hidden>
+                <label>Horários personalizados</label>
+                <div class="linha"><input type="time" id="hora" style="width:auto"><button id="btn-add-hora" type="button">Adicionar horário</button></div>
+                <div id="chips-novos"></div>
+              </div>
+            </div>
+
+            <div class="wiz-passo"><span class="n">3</span><h3>Duração</h3></div>
+            <div class="seg" id="seg-dur"></div>
+            <div id="bloco-periodo" style="margin-top:10px">
+              <div class="seg" id="seg-dias-rapidos"></div>
+              <label for="c-dias-n">Quantos dias?</label>
+              <input type="number" id="c-dias-n" min="1" max="365" value="7" style="width:110px">
+            </div>
+            <div id="bloco-inicio" hidden><label for="c-inicio">Começa em</label>
+            <input type="date" id="c-inicio" style="width:auto"></div>
+            <div id="bloco-dias-sem" hidden><label>Dias da semana</label>
+            <div class="dias" id="dias"></div></div>
+
+            <div class="previa">
+              <p id="prev-texto"></p>
+              <div class="prev-doses" id="prev-doses"></div>
+              <div class="trilho24"><div class="trilho-linha"></div><div id="trilho-pontos"></div></div>
+              <div class="ticks"><span>0h</span><span>6h</span><span>12h</span><span>18h</span><span>24h</span></div>
+            </div>
+            <div style="margin-top:14px" class="linha">
+              <button class="principal" id="btn-salvar">Salvar cronograma</button>
+              <button id="btn-cancelar" type="button">Cancelar</button>
+            </div>
+          </div>
+        </div></div>
+        <div id="medicamentos"></div>
+      </div>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div id="aba-historico" class="painel" hidden>
+      <div class="cartao">
+        <div class="linha" style="justify-content:space-between; margin-bottom:10px">
+          <h2 style="margin:0">Histórico</h2>
+          <div class="seg" id="seg-hist"></div>
+        </div>
+        <p class="pequeno" id="hist-resumo" style="margin:0 0 10px"></p>
+        <div id="historico"></div>
+      </div>
+    </div>
+
+    <!-- PERFIL -->
+    <div id="aba-estoque" class="painel" hidden>
+      <div class="cartao">
+        <h2>📦 Estoque de remédios</h2>
+        <p class="pequeno" style="margin-top:0">Informe quantos comprimidos você tem. Cada dose confirmada desconta 1 e você recebe um aviso (push) quando chegar ao limite.</p>
+        <div id="estoque-resumo" class="pequeno"></div>
+      </div>
+      <div id="estoque-lista"></div>
+    </div>
+
+    <div id="aba-perfil" class="painel" hidden>
+      <div class="cartao">
+        <h2>🔊 Som do alarme</h2>
+        <p class="pequeno" id="som-status" style="margin-top:0"></p>
+        <label>Som</label>
+        <div id="seg-som"></div>
+        <label for="som-altura">Altura do som <span class="pequeno">(grave ↔ agudo)</span></label>
+        <input type="range" id="som-altura" min="0" max="100" value="50">
+        <label for="som-volume">Volume</label>
+        <input type="range" id="som-volume" min="0" max="100" value="70">
+        <label>Duração do toque</label>
+        <div class="seg" id="seg-duracao"></div>
+        <div class="linha" style="margin-top:14px">
+          <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="voz-ativa"> Falar o remédio e a dosagem depois do alarme</label>
+          <button id="btn-testar-voz">🗣 Testar voz</button>
+        </div>
+        <div class="linha" style="margin-top:14px">
+          <button class="principal" id="btn-testar-som">▶ Testar som</button>
+          <button id="btn-parar-som">⏹ Parar</button>
+          <span class="pequeno" id="som-salvo"></span>
+        </div>
+        <p class="pequeno">As escolhas ficam salvas na sua conta. O som toca com a página aberta, depois de clicar em
+          “Ativar som e aviso no navegador” na aba Hoje. Com “Até confirmar”, ele toca por até 5 minutos ou até você confirmar ou adiar.</p>
+      </div>
+
+      <div class="cartao">
+        <h2>📲 Aviso no celular (push)</h2>
+        <p class="pequeno" style="margin-top:0">Status: <span class="selo off" id="selo-push">não configurado</span></p>
+        <ol class="passos">
+          <li>Instale o app <b>ntfy</b> no celular (Android ou iPhone).</li>
+          <li>Clique em <b>Gerar nome</b> abaixo e salve.</li>
+          <li>No app ntfy, assine um tópico com <b>exatamente</b> esse nome.</li>
+          <li>Clique em <b>Enviar teste</b>: o aviso deve chegar no celular.</li>
+        </ol>
+        <label for="topico">Nome do seu tópico</label>
+        <input type="text" id="topico" placeholder="ex.: remedio-ana-k3x9q2" maxlength="64" autocomplete="off">
+        <div class="linha" style="margin-top:12px">
+          <button id="btn-gerar">🎲 Gerar nome</button>
+          <button class="principal" id="btn-salvar-topico">Salvar</button>
+          <button id="btn-teste">Enviar teste</button>
+        </div>
+        <p class="pequeno">Quem souber o nome do tópico lê seus avisos. Por isso, use um nome difícil de adivinhar.
+          O aviso leva só o nome e a dosagem do remédio.</p>
+      </div>
+    </div>
+  </main>
+  <button class="fab" id="fab" title="Novo cronograma" aria-label="Novo cronograma">+</button>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
